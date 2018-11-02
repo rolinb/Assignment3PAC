@@ -1,7 +1,10 @@
 package com.example.android.assignment3_pac;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 public class Login extends AppCompatActivity {
 
@@ -9,6 +12,17 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+    }
+
+    public void goToUser(View v){
+        Intent intent = new Intent(this, UserHome.class);
+        startActivity(intent);
+    }
+
+    public void goToAdmin(View v){
+        Intent intent = new Intent(this, AdminHome.class);
+        startActivity(intent);
     }
 
 
