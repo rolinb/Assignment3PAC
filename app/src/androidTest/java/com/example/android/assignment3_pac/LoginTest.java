@@ -22,6 +22,7 @@ public class LoginTest {
 
     @Test
     public void verifyButtonsExist(){
+
         Espresso.onView(withId(R.id.admin_login_button)).perform((click()));
 
 

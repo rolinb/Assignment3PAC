@@ -23,7 +23,8 @@
         <activity
             android:name=".AdminHome"
             android:label="@string/title_activity_admin_home"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".CameraController"></activity>
     </application>
 
 </manifest>
