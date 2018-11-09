@@ -19,8 +19,8 @@
                                   <option name="values">
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
-                                      <entry key="imageAsset" value="$USER_HOME$/Downloads/lightbulb_on.png" />
-                                      <entry key="outputName" value="ic_lightbulb_on" />
+                                      <entry key="imageAsset" value="$USER_HOME$/Downloads/camera.png" />
+                                      <entry key="outputName" value="ic_camera" />
                                     </map>
                                   </option>
                                 </PersistentState>
