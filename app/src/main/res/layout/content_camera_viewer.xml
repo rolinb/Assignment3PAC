@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".cameraViewer"
+    tools:showIn="@layout/activity_camera_viewer">
+
+    <TextView
+        android:id="@+id/DeviceInformation"
+        android:layout_width="350dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginBottom="16dp"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/cameraSees"
+        app:layout_constraintEnd_toEndOf="@+id/cameraSees"
+        app:layout_constraintHorizontal_bias="0.379"
+        app:layout_constraintStart_toStartOf="@+id/cameraSees"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/cameraSees"
+        android:layout_width="321dp"
+        android:layout_height="367dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="115dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/DeviceInformation"
+        app:srcCompat="@android:drawable/screen_background_dark" />
+
+    <ToggleButton
+        android:id="@+id/Record"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="104dp"
+        android:layout_marginLeft="104dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="36dp"
+        android:text="ToggleButton"
+        android:textOff="Start Recording"
+        android:textOn="Stop Recording"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/DeviceInformation"
+        app:layout_constraintVertical_bias="1.0" />
+</android.support.constraint.ConstraintLayout>

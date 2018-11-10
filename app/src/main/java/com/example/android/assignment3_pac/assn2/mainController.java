@@ -8,6 +8,9 @@ import com.example.android.assignment3_pac.assn2.part1.devices.Device;
 import org.json.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 public  class mainController {
 
@@ -38,6 +41,11 @@ public  class mainController {
                 return null;
             }
             return cameras;
+        }
+
+        public static Device getDevice(UUID uuid){
+            Map<UUID, Device> devices = ((Hub) hub).getDevices();
+            return devices.get(uuid);
         }
     }
 

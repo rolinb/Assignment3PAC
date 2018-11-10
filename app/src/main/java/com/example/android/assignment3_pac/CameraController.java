@@ -1,7 +1,9 @@
 package com.example.android.assignment3_pac;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -17,7 +19,11 @@ import com.example.android.assignment3_pac.assn2.part1.devices.Device;
 
 import org.w3c.dom.Text;
 
-public class CameraController extends AppCompatActivity {
+import java.util.HashMap;
+
+public class CameraController extends AppCompatActivity implements View.OnClickListener {
+
+    HashMap<Integer, Device> whichCamera = new HashMap<Integer, Device>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,21 +31,26 @@ public class CameraController extends AppCompatActivity {
         setContentView(R.layout.activity_camera);
         TableLayout layout = new TableLayout(this);
 
+        int mapper = 0;
+
         if(mainController.controller.getCameras() != null) {
 
 
             for (Camera c : mainController.controller.getCameras()) {
+                whichCamera.put(mapper, c);
                 TableRow row = new TableRow(this);
-                TextView mytext = new TextView(this);
-                mytext.setText(c.toString());
-                mytext.setMaxLines(3);
-                mytext.setHorizontallyScrolling(false);
-                mytext.setLayoutParams(new TableRow.LayoutParams(800,250) );
+                TextView DeviceInfo = new TextView(this);
+                DeviceInfo.setText(c.toString());
+                DeviceInfo.setMaxLines(3);
+                DeviceInfo.setHorizontallyScrolling(false);
+                DeviceInfo.setLayoutParams(new TableRow.LayoutParams(800,250) );
                 ImageButton cameraButton = new ImageButton(this);
                 cameraButton.setImageResource(R.drawable.ic_camera);
                 cameraButton.setMinimumWidth(250);
+                cameraButton.setTag(c);
+                cameraButton.setOnClickListener(this);
                 row.addView(cameraButton);
-                row.addView(mytext);
+                row.addView(DeviceInfo);
                 row.setHorizontalScrollBarEnabled(false);
                 layout.addView(row);
 
@@ -71,6 +82,13 @@ public class CameraController extends AppCompatActivity {
 
 
         //ImageView imageView = new ImageView(findViewById())
+    }
+
+    public void onClick(View view){
+
+        Intent intent = new Intent(this, cameraViewer.class);
+        intent.putExtra("UUID", ((Device) view.getTag()).getIdentifier().toString());
+        startActivity(intent);
     }
 
 
