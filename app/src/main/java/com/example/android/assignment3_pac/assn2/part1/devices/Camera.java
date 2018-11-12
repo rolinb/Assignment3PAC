@@ -40,6 +40,10 @@ public class Camera extends Device {
     return Status.ERROR;
   }
 
+  public boolean getIsRecording(){
+    return isRecording;
+  }
+
   @Override
   public String toString() {
     return "Camera id " + super.getIdentifier().toString();

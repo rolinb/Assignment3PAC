@@ -4,6 +4,8 @@ import com.example.android.assignment3_pac.assn2.part1.Hub;
 import com.example.android.assignment3_pac.assn2.part1.Mediator;
 import com.example.android.assignment3_pac.assn2.part1.devices.Camera;
 import com.example.android.assignment3_pac.assn2.part1.devices.Device;
+import com.example.android.assignment3_pac.assn2.part1.devices.Lightbulb;
+import com.example.android.assignment3_pac.assn2.part1.devices.SmartPlug;
 
 import org.json.*;
 
@@ -23,6 +25,10 @@ public  class mainController {
             hub = new Hub();
             Camera c = new Camera(hub);
             c = new Camera(hub);
+            Lightbulb l = new Lightbulb(hub);
+            l = new Lightbulb(hub);
+            l = new Lightbulb(hub);
+            SmartPlug s = new SmartPlug(hub);
 
         }
 
@@ -42,6 +48,34 @@ public  class mainController {
             }
             return cameras;
         }
+
+        public static ArrayList<Lightbulb> getLightbulbs(){
+            ArrayList<Lightbulb> lightbulbs = new ArrayList<Lightbulb>();
+            for (Device d : ((Hub) hub).getDevices().values()){
+                if(d instanceof Lightbulb){
+                    lightbulbs.add( (Lightbulb) d);
+                }
+            }
+            if(lightbulbs.isEmpty()){
+                return null;
+            }
+            return lightbulbs;
+        }
+
+        public static ArrayList<SmartPlug> getSmartPlugs(){
+            ArrayList<SmartPlug> smartPlugs = new ArrayList<SmartPlug>();
+            for (Device d : ((Hub) hub).getDevices().values()){
+                if(d instanceof SmartPlug){
+                    smartPlugs.add( (SmartPlug) d);
+                }
+            }
+            if(smartPlugs.isEmpty()){
+                return null;
+            }
+            return smartPlugs;
+        }
+
+
 
         public static Device getDevice(UUID uuid){
             Map<UUID, Device> devices = ((Hub) hub).getDevices();
