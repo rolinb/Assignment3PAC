@@ -26,6 +26,11 @@ public class SmartPlug extends Device implements SwitchableDevice {
     aMed.alert(this, status + isOn);
   }
 
+  public boolean getCondition() {
+    return isOn;
+  }
+
+
   @Override
   public String toString() {
     return "Smartplug id " + super.getIdentifier().toString();

@@ -23,6 +23,13 @@ public class UserHome extends AppCompatActivity {
     }
 
     public void goToSmartPlug(View v){
+        Intent intent = new Intent(this, SmartPlugController.class);
+        startActivity(intent);
+    }
+
+    public void goToLightbulb(View v){
+        Intent intent = new Intent(this, LightbulbController.class);
+        startActivity(intent);
     }
 
 

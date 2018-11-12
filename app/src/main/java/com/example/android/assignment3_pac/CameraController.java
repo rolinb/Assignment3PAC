@@ -23,7 +23,6 @@ import java.util.HashMap;
 
 public class CameraController extends AppCompatActivity implements View.OnClickListener {
 
-    HashMap<Integer, Device> whichCamera = new HashMap<Integer, Device>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +36,6 @@ public class CameraController extends AppCompatActivity implements View.OnClickL
 
 
             for (Camera c : mainController.controller.getCameras()) {
-                whichCamera.put(mapper, c);
                 TableRow row = new TableRow(this);
                 TextView DeviceInfo = new TextView(this);
                 DeviceInfo.setText(c.toString());
@@ -64,24 +62,7 @@ public class CameraController extends AppCompatActivity implements View.OnClickL
         }
         setContentView(layout);
 
-        /*
-        Mediator hub = new Hub();
-        int a = (int) Math.round(Math.random()*10);
-        for (int i=0; i< a; i++){
-            Device c = new Camera(hub);
-        }
-        for ( Device d : ((Hub) hub).getDevices().values()){
-            if (d instanceof Camera){
 
-                TextView mytext = new TextView(this);
-                mytext.setText("OMG ITS A CAMERA");
-                layout.addView(mytext);
-            }
-        }
-        */
-
-
-        //ImageView imageView = new ImageView(findViewById())
     }
 
     public void onClick(View view){

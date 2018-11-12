@@ -28,7 +28,9 @@
         <activity
             android:name=".cameraViewer"
             android:label="@string/title_activity_camera_viewer"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".LightbulbController" />
+        <activity android:name=".SmartPlugController"></activity>
     </application>
 
 </manifest>
