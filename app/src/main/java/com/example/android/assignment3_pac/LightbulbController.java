@@ -22,6 +22,8 @@ public class LightbulbController extends AppCompatActivity {
 
         if(mainController.controller.getLightbulbs() != null){
 
+            int i = 0;
+
             for(Lightbulb l : mainController.controller.getLightbulbs()){
                 final Lightbulb innerL = l; //need for inner class
                 TableRow r = new TableRow(this);
@@ -31,6 +33,7 @@ public class LightbulbController extends AppCompatActivity {
                 DeviceInfo.setHorizontallyScrolling(false);
                 DeviceInfo.setLayoutParams(new TableRow.LayoutParams(800,250) );
                 ToggleButton onOff = new ToggleButton(this);
+                onOff.setContentDescription("Button " + i);
                 if(l.getCondition()){
                     onOff.setChecked(true);
                 }
@@ -43,6 +46,7 @@ public class LightbulbController extends AppCompatActivity {
                 r.addView(DeviceInfo);
                 r.addView(onOff);
                 layout.addView(r);
+                i++;
             }
         }
         else{

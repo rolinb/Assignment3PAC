@@ -24,6 +24,8 @@ public class SmartPlugController extends AppCompatActivity {
 
         if(mainController.controller.getSmartPlugs() != null){
 
+            int i = 0;
+
             for(SmartPlug s : mainController.controller.getSmartPlugs()){
                 final SmartPlug innerS = s; //need for inner class
                 TableRow r = new TableRow(this);
@@ -33,6 +35,7 @@ public class SmartPlugController extends AppCompatActivity {
                 DeviceInfo.setHorizontallyScrolling(false);
                 DeviceInfo.setLayoutParams(new TableRow.LayoutParams(800,250) );
                 ToggleButton onOff = new ToggleButton(this);
+                onOff.setContentDescription("Button " + 0);
                 if(s.getCondition()){
                     onOff.setChecked(true);
                 }
@@ -45,6 +48,7 @@ public class SmartPlugController extends AppCompatActivity {
                 r.addView(DeviceInfo);
                 r.addView(onOff);
                 layout.addView(r);
+                i++;
             }
         }
         else{
