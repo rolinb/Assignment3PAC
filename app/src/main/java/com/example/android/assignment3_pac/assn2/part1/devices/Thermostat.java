@@ -42,4 +42,8 @@ public class Thermostat extends Device {
     aMed.alert(this, "Setting temp to " + t.getTemperature());
     status = Status.NORMAL;
   }
+
+  public Temperature getTemp(){
+    return setPoint;
+  }
 }

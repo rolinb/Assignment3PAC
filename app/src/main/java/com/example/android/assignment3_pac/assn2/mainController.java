@@ -6,6 +6,7 @@ import com.example.android.assignment3_pac.assn2.part1.devices.Camera;
 import com.example.android.assignment3_pac.assn2.part1.devices.Device;
 import com.example.android.assignment3_pac.assn2.part1.devices.Lightbulb;
 import com.example.android.assignment3_pac.assn2.part1.devices.SmartPlug;
+import com.example.android.assignment3_pac.assn2.part1.devices.Thermostat;
 
 import org.json.*;
 
@@ -29,6 +30,8 @@ public  class mainController {
             l = new Lightbulb(hub);
             l = new Lightbulb(hub);
             SmartPlug s = new SmartPlug(hub);
+            Thermostat t = new Thermostat(hub);
+
 
         }
 
@@ -75,12 +78,40 @@ public  class mainController {
             return smartPlugs;
         }
 
+        public static ArrayList<Thermostat> getThermostats(){
+            ArrayList<Thermostat> thermostats = new ArrayList<Thermostat>();
+            for (Device d : ((Hub) hub).getDevices().values()){
+                if(d instanceof Thermostat){
+                    thermostats.add( (Thermostat) d);
+                }
+            }
+            if(thermostats.isEmpty()){
+                return null;
+            }
+            return thermostats;
+        }
+
 
 
         public static Device getDevice(UUID uuid){
             Map<UUID, Device> devices = ((Hub) hub).getDevices();
             return devices.get(uuid);
         }
+
+        public static void cameraChangeLights(boolean bool){
+            for(Lightbulb l : getLightbulbs()){
+                hub.alert(l, "Status changed by camera");
+                if(l.getCondition() != bool){
+                    l.toggle();
+                }
+            }
+        }
+
+
+
+
+
+
     }
 
 }

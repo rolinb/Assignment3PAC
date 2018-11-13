@@ -32,5 +32,10 @@ public class UserHome extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void goToThermostat(View v){
+        Intent intent = new Intent(this, ThermostatController.class);
+        startActivity(intent);
+    }
+
 
 }

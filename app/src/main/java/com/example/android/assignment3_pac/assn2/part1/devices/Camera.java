@@ -28,7 +28,7 @@ public class Camera extends Device {
   }
 
   public void record() throws CameraFullException {
-    isRecording = true;
+    isRecording = !isRecording;
     aMed.alert(this, "Started recording");
     if(Math.random()*1000 > diskSize) {
       throw new CameraFullException("Camera Full");
