@@ -36,6 +36,11 @@ public class SmartPlugTest {
 
     @Test
     public void checkToggle(){
+
+        //onView(withId(R.id.create_username_field)).perform(typeText("user"));
+        //onView(withId(R.id.create_password_field)).perform(typeText("pass"));
+        //closeSoftKeyboard();
+
         onView(withId(R.id.user_login_button)).perform(click());
         onView(withId(R.id.smartplug_button)).perform(click());
 

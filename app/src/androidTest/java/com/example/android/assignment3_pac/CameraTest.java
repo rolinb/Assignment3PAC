@@ -9,6 +9,9 @@ import android.support.test.rule.ActivityTestRule;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.example.android.assignment3_pac.assn2.mainController;
+import com.example.android.assignment3_pac.assn2.part1.Status;
+
 import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Rule;
@@ -44,11 +47,46 @@ public class CameraTest {
 
     @Test
     public void cameraInfoTest(){
+
+        //onView(withId(R.id.create_username_field)).perform(typeText("user"));
+        //onView(withId(R.id.create_password_field)).perform(typeText("pass"));
+        //closeSoftKeyboard();
+
         onView(withId(R.id.user_login_button)).perform(click());
         onView(withId(R.id.camera_button)).perform(click());
 
         onView(withContentDescription("Button 0")).perform(click());
         onView(withId(R.id.cameraSees)).check(matches(isDisplayed()));
+        onView(withId(R.id.cameraOnOff)).check(matches(isDisplayed()));
+        onView(withId(R.id.Record)).check(matches(isDisplayed()));
+        onView(withId(R.id.DeviceInformation)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void checkToggle(){
+
+        //onView(withId(R.id.create_username_field)).perform(typeText("user"));
+        //onView(withId(R.id.create_password_field)).perform(typeText("pass"));
+        //closeSoftKeyboard();
+
+        onView(withId(R.id.user_login_button)).perform(click());
+        onView(withId(R.id.camera_button)).perform(click());
+
+        onView(withContentDescription("Button 0")).perform(click());
+
+        onView(withId(R.id.Record)).perform(click());
+
+        mainController.controller.getCameras().get(0).setStatus(Status.NORMAL);
+
+        assert(mainController.controller.getCameras().get(0).getIsRecording() == true);
+
+        onView(withId(R.id.Record)).perform(click());
+
+        assert(mainController.controller.getCameras().get(0).getIsRecording() == false);
+
+        onView(withId(R.id.cameraOnOff)).perform(click());
+
+        assert(mainController.controller.getCameras().get(0).getStatus() == Status.OFF);
     }
 
 }
