@@ -17,6 +17,7 @@ import android.widget.ToggleButton;
 import com.example.android.assignment3_pac.R;
 
 import com.example.android.assignment3_pac.assn2.mainController;
+import com.example.android.assignment3_pac.assn2.part1.Status;
 import com.example.android.assignment3_pac.assn2.part1.devices.Camera;
 import com.example.android.assignment3_pac.assn2.part1.devices.CameraFullException;
 
@@ -36,15 +37,26 @@ public class cameraViewer extends AppCompatActivity {
         String uuid = intent.getStringExtra("UUID");
         final Camera camera = (Camera) mainController.controller.getDevice(UUID.fromString(uuid));
 
-        TextView deviceInfo = findViewById(R.id.DeviceInformation);
-        deviceInfo.append(camera.toString() + "\n");
-        deviceInfo.append("Status: " + camera.getStatus());
 
-        ToggleButton toggle = findViewById(R.id.Record);
+
+        final TextView deviceInfo = findViewById(R.id.DeviceInformation);
+        updateDeviceInfo(deviceInfo, camera);
+
+        final ToggleButton toggle = findViewById(R.id.Record);
+        final ToggleButton onOff = findViewById(R.id.cameraOnOff);
+
+        if(camera.getStatus() == Status.NORMAL){
+            onOff.setChecked(true);
+
+        }
+
         ImageView changeImage = findViewById(R.id.cameraSees);
-        if(camera.getIsRecording()) {
-            toggle.setChecked(true);
-            boolean person = new Random().nextBoolean();
+        if(onOff.isChecked()) {
+            if(camera.getIsRecording()){
+                toggle.setChecked(true);
+            }
+            toggle.setEnabled(true);
+            boolean person = new Random().nextBoolean(); //determines lights
             if(person) {
                 changeImage.setImageResource(R.drawable.ic_person_added);
                 mainController.controller.cameraChangeLights(person);
@@ -55,36 +67,73 @@ public class cameraViewer extends AppCompatActivity {
             }
         }
         else{
+            toggle.setEnabled(false);
             changeImage.setImageResource(R.color.colorBlack);
 
         }
 
-        toggle.setOnClickListener(new View.OnClickListener() {
+        onOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try {
-                    camera.record();
-                    ImageView changeImage = findViewById(R.id.cameraSees);
-                    if(camera.getIsRecording()){
-                        boolean person = new Random().nextBoolean();
-                        if(person) {
-                            changeImage.setImageResource(R.drawable.ic_person_added);
-                            mainController.controller.cameraChangeLights(person);
-                        }
-                        else{
-                            mainController.controller.cameraChangeLights(person);
-                            changeImage.setImageResource(R.drawable.ic_empty_person);
-                        }
-                    }else {
-                        changeImage.setImageResource(R.color.colorBlack);
+                ImageView changeImage = findViewById(R.id.cameraSees);
+
+                if (onOff.isChecked()){
+                    toggle.setEnabled(true);
+                    camera.setStatus(Status.NORMAL);
+                    updateDeviceInfo(deviceInfo, camera);
+
+                    boolean person = new Random().nextBoolean();
+                    if (person) {
+                        changeImage.setImageResource(R.drawable.ic_person_added);
+                        mainController.controller.cameraChangeLights(person);
+                    } else {
+                        mainController.controller.cameraChangeLights(person);
+                        changeImage.setImageResource(R.drawable.ic_empty_person);
                     }
 
-                }catch(CameraFullException e){
-                    Toast.makeText(cameraViewer.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    camera.setStatus(Status.OFF);
+                    changeImage.setImageResource(R.color.colorBlack);
+                    toggle.setEnabled(false);
+                    updateDeviceInfo(deviceInfo, camera);
                 }
             }
         });
 
+        toggle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(camera.getStatus() != Status.OFF) {
+
+
+                    try {
+                        camera.record();
+                        ImageView changeImage = findViewById(R.id.cameraSees);
+                            boolean person = new Random().nextBoolean();
+                            if (person) {
+                                changeImage.setImageResource(R.drawable.ic_person_added);
+                                mainController.controller.cameraChangeLights(person);
+                            } else {
+                                mainController.controller.cameraChangeLights(person);
+                                changeImage.setImageResource(R.drawable.ic_empty_person);
+                            }
+
+
+                    } catch (CameraFullException e) {
+                        Toast.makeText(cameraViewer.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+            }
+        });
+
+    }
+
+    public void updateDeviceInfo(TextView deviceInfo, Camera camera){
+
+        deviceInfo.setText(camera.toString() + "\n");
+        deviceInfo.append("Status: " + camera.getStatus());
     }
 
 

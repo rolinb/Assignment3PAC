@@ -2,6 +2,7 @@ package com.example.android.assignment3_pac.assn2;
 
 import com.example.android.assignment3_pac.assn2.part1.Hub;
 import com.example.android.assignment3_pac.assn2.part1.Mediator;
+import com.example.android.assignment3_pac.assn2.part1.Status;
 import com.example.android.assignment3_pac.assn2.part1.devices.Camera;
 import com.example.android.assignment3_pac.assn2.part1.devices.Device;
 import com.example.android.assignment3_pac.assn2.part1.devices.Lightbulb;
@@ -25,7 +26,9 @@ public  class mainController {
         public static void initialise(){
             hub = new Hub();
             Camera c = new Camera(hub);
+            c.setStatus(Status.OFF);
             c = new Camera(hub);
+            c.setStatus(Status.NORMAL);
             Lightbulb l = new Lightbulb(hub);
             l = new Lightbulb(hub);
             l = new Lightbulb(hub);

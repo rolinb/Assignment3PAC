@@ -30,16 +30,17 @@ public class Camera extends Device {
   public void record() throws CameraFullException {
     isRecording = !isRecording;
     aMed.alert(this, "Started recording");
-    if(Math.random()*1000 > diskSize) {
+    if(isRecording &&  Math.random()*1000 > diskSize) {
+      isRecording = false;
       throw new CameraFullException("Camera Full");
     }
   }
-
+/* WHY WAS THIS A THING
   @Override
   public Status getStatus() {
     return Status.ERROR;
   }
-
+*/
   public boolean getIsRecording(){
     return isRecording;
   }
