@@ -47,6 +47,11 @@ public class CameraTest {
 
     @Test
     public void cameraInfoTest(){
+
+        //onView(withId(R.id.create_username_field)).perform(typeText("user"));
+        //onView(withId(R.id.create_password_field)).perform(typeText("pass"));
+        //closeSoftKeyboard();
+
         onView(withId(R.id.user_login_button)).perform(click());
         onView(withId(R.id.camera_button)).perform(click());
 
@@ -59,6 +64,11 @@ public class CameraTest {
 
     @Test
     public void checkToggle(){
+
+        //onView(withId(R.id.create_username_field)).perform(typeText("user"));
+        //onView(withId(R.id.create_password_field)).perform(typeText("pass"));
+        //closeSoftKeyboard();
+
         onView(withId(R.id.user_login_button)).perform(click());
         onView(withId(R.id.camera_button)).perform(click());
 

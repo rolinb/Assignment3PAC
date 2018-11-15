@@ -39,6 +39,11 @@ public class ThermostatTest {
 
     @Test
     public void thermostatStartTest(){
+
+        //onView(withId(R.id.create_username_field)).perform(typeText("user"));
+        //onView(withId(R.id.create_password_field)).perform(typeText("pass"));
+        //closeSoftKeyboard();
+
         onView(withId(R.id.user_login_button)).perform(click());
         onView(withId(R.id.thermostat_button)).perform(click());
 
@@ -49,6 +54,11 @@ public class ThermostatTest {
 
     @Test
     public void thermostatUnitTest() {
+
+        //onView(withId(R.id.create_username_field)).perform(typeText("user"));
+        //onView(withId(R.id.create_password_field)).perform(typeText("pass"));
+        //closeSoftKeyboard();
+
         onView(withId(R.id.user_login_button)).perform(click());
         onView(withId(R.id.thermostat_button)).perform(click());
 
@@ -70,6 +80,11 @@ public class ThermostatTest {
 
     @Test
     public void checkToggle(){
+
+        //onView(withId(R.id.create_username_field)).perform(typeText("user"));
+        //onView(withId(R.id.create_password_field)).perform(typeText("pass"));
+        //closeSoftKeyboard();
+
         onView(withId(R.id.user_login_button)).perform(click());
         onView(withId(R.id.thermostat_button)).perform(click());
 
