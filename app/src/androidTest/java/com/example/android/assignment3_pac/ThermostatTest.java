@@ -8,6 +8,7 @@ import android.support.test.runner.AndroidJUnit4;
 import android.support.test.rule.ActivityTestRule;
 
 import com.example.android.assignment3_pac.assn2.mainController;
+import com.example.android.assignment3_pac.assn2.part1.Status;
 import com.example.android.assignment3_pac.assn2.part1.devices.Temperature;
 import com.example.android.assignment3_pac.assn2.part1.devices.Thermostat;
 
@@ -65,5 +66,22 @@ public class ThermostatTest {
 
         assert(t.getTemp().getUnit() == Temperature.Unit.FAHRENHEIT);
         assert(t.getTemp().getTemperature() == temp);
+    }
+
+    @Test
+    public void checkToggle(){
+        onView(withId(R.id.user_login_button)).perform(click());
+        onView(withId(R.id.thermostat_button)).perform(click());
+
+        onView(withContentDescription("Button 0")).perform(click());
+
+        mainController.controller.getThermostats().get(0).setStatus(Status.OFF);
+        onView(withId(R.id.onOffToggle)).perform(click());
+
+        assert(mainController.controller.getThermostats().get(0).getStatus() == Status.NORMAL);
+
+        onView(withId(R.id.onOffToggle)).perform(click());
+
+        assert(mainController.controller.getThermostats().get(0).getStatus() == Status.OFF);
     }
 }
