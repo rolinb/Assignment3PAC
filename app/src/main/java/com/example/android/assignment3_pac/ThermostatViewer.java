@@ -47,10 +47,8 @@ public class ThermostatViewer extends AppCompatActivity {
         textview.setText(thermostat.toString());
 
         final NumberPicker numberPicker = findViewById(R.id.temperatureInput);
-        numberPicker.setMaxValue(100);
-        numberPicker.setMinValue(0);
+
         numberPicker.setWrapSelectorWheel(true);
-        numberPicker.setValue((int) thermostat.getTemp().getTemperature());
 
         final Temperature.Unit unit = thermostat.getTemp().getUnit();
         final RadioGroup units = findViewById(R.id.temperatureUnits);
@@ -59,10 +57,16 @@ public class ThermostatViewer extends AppCompatActivity {
 
         if(unit == Temperature.Unit.CELSIUS){
             units.check(R.id.celsiusButton);
+            numberPicker.setMinValue(10);
+            numberPicker.setMaxValue(30);
         }
         else{
             units.check(R.id.fahrenheitButton);
+            numberPicker.setMinValue(50);
+            numberPicker.setMaxValue(86);
         }
+        numberPicker.setValue((int) thermostat.getTemp().getTemperature());
+
 
         final ToggleButton onOff = findViewById(R.id.onOffToggle);
 
@@ -100,8 +104,11 @@ public class ThermostatViewer extends AppCompatActivity {
             public void onClick(View view) {
                 double tmp = thermostat.getTemp().getTemperature();
                 tmp = (tmp - 32) * 5.0/9.0;
+
                 try {
                     thermostat.setTemp(new Temperature(tmp, Temperature.Unit.CELSIUS));
+                    numberPicker.setMinValue(10);
+                    numberPicker.setMaxValue(30);
                     numberPicker.setValue((int) tmp);
                 }catch(Temperature.TemperatureOutofBoundsException e){
                     Toast.makeText(ThermostatViewer.this, e.toString(), Toast.LENGTH_SHORT).show();
@@ -116,6 +123,8 @@ public class ThermostatViewer extends AppCompatActivity {
                 tmp = (tmp * 9.0 / 5.0) + 32;
                 try {
                     thermostat.setTemp(new Temperature(tmp, Temperature.Unit.FAHRENHEIT));
+                    numberPicker.setMinValue(50);
+                    numberPicker.setMaxValue(86);
                     numberPicker.setValue((int) tmp);
                 }catch(Temperature.TemperatureOutofBoundsException e){
                     Toast.makeText(ThermostatViewer.this, e.toString(), Toast.LENGTH_SHORT).show();
