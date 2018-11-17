@@ -21,142 +21,137 @@ import java.util.UUID;
 
 public class ThermostatViewer extends AppCompatActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_thermostat_viewer);
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_thermostat_viewer);
 
-        Random random = new Random();
+    Random random = new Random();
 
-        int outsideTrigger = random.nextInt(10) + 1;
+    int outsideTrigger = random.nextInt(10) + 1;
 
+    Intent intent = getIntent();
+    String uuid = intent.getStringExtra("UUID");
 
-        Intent intent = getIntent();
-        String uuid = intent.getStringExtra("UUID");
+    final Thermostat thermostat = (Thermostat) mainController.controller
+        .getDevice(UUID.fromString(uuid));
 
-        final Thermostat thermostat = (Thermostat) mainController.controller.getDevice(UUID.fromString(uuid));
-
-        //1 in 10 chance to trigger outside temp auto change temperature
-        if (outsideTrigger == 1 && thermostat.getStatus() != Status.OFF){
-            outsideTempTrigger(thermostat);
-        }
-
-
-
-        TextView textview = findViewById(R.id.thermostatInfo);
-        textview.setText(thermostat.toString());
-
-        final NumberPicker numberPicker = findViewById(R.id.temperatureInput);
-
-        numberPicker.setWrapSelectorWheel(true);
-
-        final Temperature.Unit unit = thermostat.getTemp().getUnit();
-        final RadioGroup units = findViewById(R.id.temperatureUnits);
-        final RadioButton celsiusButton = findViewById(R.id.celsiusButton);
-        final RadioButton fahrenheitButton = findViewById(R.id.fahrenheitButton);
-
-        if(unit == Temperature.Unit.CELSIUS){
-            units.check(R.id.celsiusButton);
-            numberPicker.setMinValue(10);
-            numberPicker.setMaxValue(30);
-        }
-        else{
-            units.check(R.id.fahrenheitButton);
-            numberPicker.setMinValue(50);
-            numberPicker.setMaxValue(86);
-        }
-        numberPicker.setValue((int) thermostat.getTemp().getTemperature());
-
-
-        final ToggleButton onOff = findViewById(R.id.onOffToggle);
-
-        if(thermostat.getStatus() == Status.OFF){
-            numberPicker.setEnabled(false);
-            units.setEnabled(false);
-            celsiusButton.setEnabled(false);
-            fahrenheitButton.setEnabled(false);
-        }
-        else{
-            onOff.setChecked(true);
-        }
-
-        onOff.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(onOff.isChecked()){
-                    numberPicker.setEnabled(true);
-                    units.setEnabled(true);
-                    celsiusButton.setEnabled(true);
-                    fahrenheitButton.setEnabled(true);
-                    thermostat.setStatus(Status.NORMAL);
-                }else{
-                    numberPicker.setEnabled(false);
-                    units.setEnabled(false);
-                    celsiusButton.setEnabled(false);
-                    fahrenheitButton.setEnabled(false);
-                    thermostat.setStatus(Status.OFF);
-                }
-            }
-        });
-
-        celsiusButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                double tmp = thermostat.getTemp().getTemperature();
-                tmp = (tmp - 32) * 5.0/9.0;
-
-                try {
-                    thermostat.setTemp(new Temperature(tmp, Temperature.Unit.CELSIUS));
-                    numberPicker.setMinValue(10);
-                    numberPicker.setMaxValue(30);
-                    numberPicker.setValue((int) tmp);
-                }catch(Temperature.TemperatureOutofBoundsException e){
-                    Toast.makeText(ThermostatViewer.this, e.toString(), Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-        fahrenheitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                double tmp = thermostat.getTemp().getTemperature();
-                tmp = (tmp * 9.0 / 5.0) + 32;
-                try {
-                    thermostat.setTemp(new Temperature(tmp, Temperature.Unit.FAHRENHEIT));
-                    numberPicker.setMinValue(50);
-                    numberPicker.setMaxValue(86);
-                    numberPicker.setValue((int) tmp);
-                }catch(Temperature.TemperatureOutofBoundsException e){
-                    Toast.makeText(ThermostatViewer.this, e.toString(), Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-        numberPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-            @Override
-            public void onValueChange(NumberPicker numberPicker, int i, int i1) {
-                try {
-                    int tmp = numberPicker.getValue();
-
-                    thermostat.setTemp(new Temperature(tmp, unit));
-                    numberPicker.setValue(tmp);
-                }catch(Temperature.TemperatureOutofBoundsException e){
-                    Toast.makeText(ThermostatViewer.this, e.toString(), Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
+    //1 in 10 chance to trigger outside temp auto change temperature
+    if (outsideTrigger == 1 && thermostat.getStatus() != Status.OFF) {
+      outsideTempTrigger(thermostat);
     }
 
-    public void outsideTempTrigger(Thermostat t){
+    TextView textview = findViewById(R.id.thermostatInfo);
+    textview.setText(thermostat.toString());
+
+    final NumberPicker numberPicker = findViewById(R.id.temperatureInput);
+
+    numberPicker.setWrapSelectorWheel(true);
+
+    final Temperature.Unit unit = thermostat.getTemp().getUnit();
+    final RadioGroup units = findViewById(R.id.temperatureUnits);
+    final RadioButton celsiusButton = findViewById(R.id.celsiusButton);
+    final RadioButton fahrenheitButton = findViewById(R.id.fahrenheitButton);
+
+    if (unit == Temperature.Unit.CELSIUS) {
+      units.check(R.id.celsiusButton);
+      numberPicker.setMinValue(10);
+      numberPicker.setMaxValue(30);
+    } else {
+      units.check(R.id.fahrenheitButton);
+      numberPicker.setMinValue(50);
+      numberPicker.setMaxValue(86);
+    }
+    numberPicker.setValue((int) thermostat.getTemp().getTemperature());
+
+    final ToggleButton onOff = findViewById(R.id.onOffToggle);
+
+    if (thermostat.getStatus() == Status.OFF) {
+      numberPicker.setEnabled(false);
+      units.setEnabled(false);
+      celsiusButton.setEnabled(false);
+      fahrenheitButton.setEnabled(false);
+    } else {
+      onOff.setChecked(true);
+    }
+
+    onOff.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        if (onOff.isChecked()) {
+          numberPicker.setEnabled(true);
+          units.setEnabled(true);
+          celsiusButton.setEnabled(true);
+          fahrenheitButton.setEnabled(true);
+          thermostat.setStatus(Status.NORMAL);
+        } else {
+          numberPicker.setEnabled(false);
+          units.setEnabled(false);
+          celsiusButton.setEnabled(false);
+          fahrenheitButton.setEnabled(false);
+          thermostat.setStatus(Status.OFF);
+        }
+      }
+    });
+
+    celsiusButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        double tmp = thermostat.getTemp().getTemperature();
+        tmp = (tmp - 32) * 5.0 / 9.0;
+
         try {
-            t.setTemp(new Temperature(72, Temperature.Unit.FAHRENHEIT));
-            mainController.controller.getHub().alert(t, "Temp change triggered by outside");
-        }catch(Temperature.TemperatureOutofBoundsException e){
-            Toast.makeText(ThermostatViewer.this, e.toString(), Toast.LENGTH_SHORT).show();
-
+          thermostat.setTemp(new Temperature(tmp, Temperature.Unit.CELSIUS));
+          numberPicker.setMinValue(10);
+          numberPicker.setMaxValue(30);
+          numberPicker.setValue((int) tmp);
+        } catch (Temperature.TemperatureOutofBoundsException e) {
+          Toast.makeText(ThermostatViewer.this, e.toString(), Toast.LENGTH_SHORT).show();
         }
+      }
+    });
+
+    fahrenheitButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        double tmp = thermostat.getTemp().getTemperature();
+        tmp = (tmp * 9.0 / 5.0) + 32;
+        try {
+          thermostat.setTemp(new Temperature(tmp, Temperature.Unit.FAHRENHEIT));
+          numberPicker.setMinValue(50);
+          numberPicker.setMaxValue(86);
+          numberPicker.setValue((int) tmp);
+        } catch (Temperature.TemperatureOutofBoundsException e) {
+          Toast.makeText(ThermostatViewer.this, e.toString(), Toast.LENGTH_SHORT).show();
+        }
+      }
+    });
+
+    numberPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+      @Override
+      public void onValueChange(NumberPicker numberPicker, int i, int i1) {
+        try {
+          int tmp = numberPicker.getValue();
+
+          thermostat.setTemp(new Temperature(tmp, unit));
+          numberPicker.setValue(tmp);
+        } catch (Temperature.TemperatureOutofBoundsException e) {
+          Toast.makeText(ThermostatViewer.this, e.toString(), Toast.LENGTH_SHORT).show();
+        }
+      }
+    });
+
+  }
+
+  public void outsideTempTrigger(Thermostat t) {
+    try {
+      t.setTemp(new Temperature(72, Temperature.Unit.FAHRENHEIT));
+      mainController.controller.getHub().alert(t, "Temp change triggered by outside");
+    } catch (Temperature.TemperatureOutofBoundsException e) {
+      Toast.makeText(ThermostatViewer.this, e.toString(), Toast.LENGTH_SHORT).show();
+
     }
+  }
 
 
 }

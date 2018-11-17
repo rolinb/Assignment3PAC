@@ -27,9 +27,9 @@ public class AndroidClient extends Client {
 
   private void display() {
     try {
-      System.out.println("AndroidClient is displaying alert from : " + aJsonObj.getString("node_id"));
-    }
-    catch(Exception eatIt){
+      System.out
+          .println("AndroidClient is displaying alert from : " + aJsonObj.getString("node_id"));
+    } catch (Exception eatIt) {
 
     }
   }

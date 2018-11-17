@@ -5,6 +5,7 @@ import com.example.android.assignment3_pac.assn2.part1.Mediator;
 import com.example.android.assignment3_pac.assn2.part1.Status;
 
 public class Thermostat extends Device {
+
   private final Mediator aMed;
   private Status status = Status.NORMAL;
   private Temperature setPoint;
@@ -43,7 +44,7 @@ public class Thermostat extends Device {
     status = Status.NORMAL;
   }
 
-  public Temperature getTemp(){
+  public Temperature getTemp() {
     return setPoint;
   }
 }

@@ -7,10 +7,10 @@ import java.util.Date;
 import java.util.HashMap;
 
 /**
- * A method object for making testing easier
- * Messaging not a core responsibility for Hub
+ * A method object for making testing easier Messaging not a core responsibility for Hub
  */
 public class JSONMessaging {
+
   private Device pDevice;
   private String pMessage;
 

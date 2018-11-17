@@ -13,48 +13,46 @@ import com.example.android.assignment3_pac.assn2.part1.devices.Lightbulb;
 
 public class LightbulbController extends AppCompatActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lightbulb_controller);
-        TableLayout layout = new TableLayout(this);
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_lightbulb_controller);
+    TableLayout layout = new TableLayout(this);
 
+    if (mainController.controller.getLightbulbs() != null) {
 
-        if(mainController.controller.getLightbulbs() != null){
+      int i = 0;
 
-            int i = 0;
-
-            for(Lightbulb l : mainController.controller.getLightbulbs()){
-                final Lightbulb innerL = l; //need for inner class
-                TableRow r = new TableRow(this);
-                TextView DeviceInfo = new TextView(this);
-                DeviceInfo.setText(l.toString());
-                DeviceInfo.setMaxLines(3);
-                DeviceInfo.setHorizontallyScrolling(false);
-                DeviceInfo.setLayoutParams(new TableRow.LayoutParams(800,250) );
-                ToggleButton onOff = new ToggleButton(this);
-                onOff.setContentDescription("Button " + i);
-                if(l.getCondition()){
-                    onOff.setChecked(true);
-                }
-                onOff.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        innerL.toggle();
-                    }
-                });
-                r.addView(DeviceInfo);
-                r.addView(onOff);
-                layout.addView(r);
-                i++;
-            }
+      for (Lightbulb l : mainController.controller.getLightbulbs()) {
+        final Lightbulb innerL = l; //need for inner class
+        TableRow r = new TableRow(this);
+        TextView DeviceInfo = new TextView(this);
+        DeviceInfo.setText(l.toString());
+        DeviceInfo.setMaxLines(3);
+        DeviceInfo.setHorizontallyScrolling(false);
+        DeviceInfo.setLayoutParams(new TableRow.LayoutParams(800, 250));
+        ToggleButton onOff = new ToggleButton(this);
+        onOff.setContentDescription("Button " + i);
+        if (l.getCondition()) {
+          onOff.setChecked(true);
         }
-        else{
-            TextView mytext = new TextView(this);
-            mytext.setText("No lightbulbs available speak to an Administrator");
-            layout.addView(mytext);
-        }
-        setContentView(layout);
-
+        onOff.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+            innerL.toggle();
+          }
+        });
+        r.addView(DeviceInfo);
+        r.addView(onOff);
+        layout.addView(r);
+        i++;
+      }
+    } else {
+      TextView mytext = new TextView(this);
+      mytext.setText("No lightbulbs available speak to an Administrator");
+      layout.addView(mytext);
     }
+    setContentView(layout);
+
+  }
 }

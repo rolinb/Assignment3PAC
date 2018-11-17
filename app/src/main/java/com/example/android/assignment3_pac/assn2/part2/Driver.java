@@ -8,6 +8,7 @@ import com.example.android.assignment3_pac.assn2.part1.devices.*;
 import java.util.UUID;
 
 public class Driver {
+
   public static void main(String[] args) {
     Hub hub = new Hub();
 //    Camera camera = new Camera(hub);
@@ -29,5 +30,5 @@ public class Driver {
       e.printStackTrace();
     }
   }
-  }
+}
 

@@ -10,23 +10,23 @@ import com.example.android.assignment3_pac.assn2.mainController;
 
 public class Login extends AppCompatActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        mainController.controller.initialise();
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_login);
+    mainController.controller.initialise();
 
-    }
+  }
 
-    public void goToUser(View v){
-        Intent intent = new Intent(this, UserHome.class);
-        startActivity(intent);
-    }
+  public void goToUser(View v) {
+    Intent intent = new Intent(this, UserHome.class);
+    startActivity(intent);
+  }
 
-    public void goToAdmin(View v){
-        Intent intent = new Intent(this, AdminHome.class);
-        startActivity(intent);
-    }
+  public void goToAdmin(View v) {
+    Intent intent = new Intent(this, AdminHome.class);
+    startActivity(intent);
+  }
 
 
 }

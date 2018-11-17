@@ -28,12 +28,12 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 @LargeTest
 public class BootTest {
 
-    @Rule
-    public ActivityTestRule<Login> mLoginRule = new ActivityTestRule<>(Login.class);
+  @Rule
+  public ActivityTestRule<Login> mLoginRule = new ActivityTestRule<>(Login.class);
 
-    @Test
-    public void a(){
+  @Test
+  public void a() {
 
-    }
+  }
 
 }

@@ -1,14 +1,13 @@
 {
-  "Hub":{
-    "UUID" : "1"
+  "Hub": {
+    "UUID": "1"
   },
-  "Camera":
-  [
+  "Camera": [
     {
-      "UUID" : "2"
+      "UUID": "2"
     },
     {
-      "UUID" : "3"
+      "UUID": "3"
     }
   ]
 }

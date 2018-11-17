@@ -8,34 +8,34 @@ import android.view.View;
 
 public class UserHome extends AppCompatActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_home);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_user_home);
+    Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+    setSupportActionBar(toolbar);
 
-    }
+  }
 
-    public void goToCamera(View v){
-        Intent intent = new Intent(this, CameraController.class);
-        startActivity(intent);
-    }
+  public void goToCamera(View v) {
+    Intent intent = new Intent(this, CameraController.class);
+    startActivity(intent);
+  }
 
-    public void goToSmartPlug(View v){
-        Intent intent = new Intent(this, SmartPlugController.class);
-        startActivity(intent);
-    }
+  public void goToSmartPlug(View v) {
+    Intent intent = new Intent(this, SmartPlugController.class);
+    startActivity(intent);
+  }
 
-    public void goToLightbulb(View v){
-        Intent intent = new Intent(this, LightbulbController.class);
-        startActivity(intent);
-    }
+  public void goToLightbulb(View v) {
+    Intent intent = new Intent(this, LightbulbController.class);
+    startActivity(intent);
+  }
 
-    public void goToThermostat(View v){
-        Intent intent = new Intent(this, ThermostatController.class);
-        startActivity(intent);
-    }
+  public void goToThermostat(View v) {
+    Intent intent = new Intent(this, ThermostatController.class);
+    startActivity(intent);
+  }
 
 
 }

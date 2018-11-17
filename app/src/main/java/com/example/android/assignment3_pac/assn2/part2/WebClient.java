@@ -28,8 +28,8 @@ public class WebClient extends Client {
   private void display() {
     try {
       System.out.println("WebClient is displaying content from : " + aJsonObj.getString("node_id"));
+    } catch (Exception eatIt) {
     }
-    catch(Exception eatIt){}
     //TODO  should be on web page
   }
 

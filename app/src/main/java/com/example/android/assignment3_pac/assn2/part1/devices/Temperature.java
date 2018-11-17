@@ -27,6 +27,7 @@ public class Temperature {
   }
 
   public class TemperatureOutofBoundsException extends Exception {
+
     public TemperatureOutofBoundsException(String s) {
       super(s);
     }

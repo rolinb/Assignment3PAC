@@ -31,26 +31,26 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 @LargeTest
 public class LightbulbTest {
 
-    @Rule
-    public ActivityTestRule<Login> mLoginRule = new ActivityTestRule<>(Login.class);
+  @Rule
+  public ActivityTestRule<Login> mLoginRule = new ActivityTestRule<>(Login.class);
 
-    @Test
-    public void checkToggle(){
+  @Test
+  public void checkToggle() {
 
-        //onView(withId(R.id.create_username_field)).perform(typeText("user"));
-        //onView(withId(R.id.create_password_field)).perform(typeText("pass"));
-        //closeSoftKeyboard();
+    //onView(withId(R.id.create_username_field)).perform(typeText("user"));
+    //onView(withId(R.id.create_password_field)).perform(typeText("pass"));
+    //closeSoftKeyboard();
 
-        onView(withId(R.id.user_login_button)).perform(click());
-        onView(withId(R.id.lightbulb_button)).perform(click());
+    onView(withId(R.id.user_login_button)).perform(click());
+    onView(withId(R.id.lightbulb_button)).perform(click());
 
-        onView(withContentDescription("Button 0")).perform(click());
+    onView(withContentDescription("Button 0")).perform(click());
 
-        assert(mainController.controller.getLightbulbs().get(0).getCondition() == true);
+    assert (mainController.controller.getLightbulbs().get(0).getCondition() == true);
 
-        onView(withContentDescription("Button 0")).perform(click());
+    onView(withContentDescription("Button 0")).perform(click());
 
-        assert(mainController.controller.getSmartPlugs().get(0).getCondition() == false);
-    }
+    assert (mainController.controller.getSmartPlugs().get(0).getCondition() == false);
+  }
 
 }

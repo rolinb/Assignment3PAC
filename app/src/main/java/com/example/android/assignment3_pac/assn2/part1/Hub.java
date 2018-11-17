@@ -22,7 +22,8 @@ public class Hub extends Device implements Mediator {
     // some logic about sending init messages or somethng.
   }
 
-  public void shutdown() {}
+  public void shutdown() {
+  }
 
   @Override
   public void register(Device pDevice) throws HubRegistrationException {
@@ -62,8 +63,6 @@ public class Hub extends Device implements Mediator {
 
   /**
    * Logging. Use SLF4J to write all message traffic to the log file.
-   *
-   * @param logMsg
    */
   public void log(String logMsg) {
     logger.info(logMsg);
@@ -72,8 +71,6 @@ public class Hub extends Device implements Mediator {
   /**
    * Alerts are events that happen at the Device level. They send the alert to the hUb, which
    * redistributes to the clients
-   *
-   * @param pMessage
    */
   @Override
   public void alert(Device pDevice, String pMessage) {

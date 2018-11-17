@@ -42,51 +42,51 @@ import static org.hamcrest.Matchers.anyOf;
 @LargeTest
 public class CameraTest {
 
-    @Rule
-    public ActivityTestRule<Login> mLoginRule = new ActivityTestRule<>(Login.class);
+  @Rule
+  public ActivityTestRule<Login> mLoginRule = new ActivityTestRule<>(Login.class);
 
-    @Test
-    public void cameraInfoTest(){
+  @Test
+  public void cameraInfoTest() {
 
-        //onView(withId(R.id.create_username_field)).perform(typeText("user"));
-        //onView(withId(R.id.create_password_field)).perform(typeText("pass"));
-        //closeSoftKeyboard();
+    //onView(withId(R.id.create_username_field)).perform(typeText("user"));
+    //onView(withId(R.id.create_password_field)).perform(typeText("pass"));
+    //closeSoftKeyboard();
 
-        onView(withId(R.id.user_login_button)).perform(click());
-        onView(withId(R.id.camera_button)).perform(click());
+    onView(withId(R.id.user_login_button)).perform(click());
+    onView(withId(R.id.camera_button)).perform(click());
 
-        onView(withContentDescription("Button 0")).perform(click());
-        onView(withId(R.id.cameraSees)).check(matches(isDisplayed()));
-        onView(withId(R.id.cameraOnOff)).check(matches(isDisplayed()));
-        onView(withId(R.id.Record)).check(matches(isDisplayed()));
-        onView(withId(R.id.DeviceInformation)).check(matches(isDisplayed()));
-    }
+    onView(withContentDescription("Button 0")).perform(click());
+    onView(withId(R.id.cameraSees)).check(matches(isDisplayed()));
+    onView(withId(R.id.cameraOnOff)).check(matches(isDisplayed()));
+    onView(withId(R.id.Record)).check(matches(isDisplayed()));
+    onView(withId(R.id.DeviceInformation)).check(matches(isDisplayed()));
+  }
 
-    @Test
-    public void checkToggle(){
+  @Test
+  public void checkToggle() {
 
-        //onView(withId(R.id.create_username_field)).perform(typeText("user"));
-        //onView(withId(R.id.create_password_field)).perform(typeText("pass"));
-        //closeSoftKeyboard();
+    //onView(withId(R.id.create_username_field)).perform(typeText("user"));
+    //onView(withId(R.id.create_password_field)).perform(typeText("pass"));
+    //closeSoftKeyboard();
 
-        onView(withId(R.id.user_login_button)).perform(click());
-        onView(withId(R.id.camera_button)).perform(click());
+    onView(withId(R.id.user_login_button)).perform(click());
+    onView(withId(R.id.camera_button)).perform(click());
 
-        onView(withContentDescription("Button 0")).perform(click());
+    onView(withContentDescription("Button 0")).perform(click());
 
-        onView(withId(R.id.Record)).perform(click());
+    onView(withId(R.id.Record)).perform(click());
 
-        mainController.controller.getCameras().get(0).setStatus(Status.NORMAL);
+    mainController.controller.getCameras().get(0).setStatus(Status.NORMAL);
 
-        assert(mainController.controller.getCameras().get(0).getIsRecording() == true);
+    assert (mainController.controller.getCameras().get(0).getIsRecording() == true);
 
-        onView(withId(R.id.Record)).perform(click());
+    onView(withId(R.id.Record)).perform(click());
 
-        assert(mainController.controller.getCameras().get(0).getIsRecording() == false);
+    assert (mainController.controller.getCameras().get(0).getIsRecording() == false);
 
-        onView(withId(R.id.cameraOnOff)).perform(click());
+    onView(withId(R.id.cameraOnOff)).perform(click());
 
-        assert(mainController.controller.getCameras().get(0).getStatus() == Status.OFF);
-    }
+    assert (mainController.controller.getCameras().get(0).getStatus() == Status.OFF);
+  }
 
 }

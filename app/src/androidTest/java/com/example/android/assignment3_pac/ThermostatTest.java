@@ -34,69 +34,69 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 @LargeTest
 public class ThermostatTest {
 
-    @Rule
-    public ActivityTestRule<Login> mLoginRule = new ActivityTestRule<>(Login.class);
+  @Rule
+  public ActivityTestRule<Login> mLoginRule = new ActivityTestRule<>(Login.class);
 
-    @Test
-    public void thermostatStartTest(){
+  @Test
+  public void thermostatStartTest() {
 
-        //onView(withId(R.id.create_username_field)).perform(typeText("user"));
-        //onView(withId(R.id.create_password_field)).perform(typeText("pass"));
-        //closeSoftKeyboard();
+    //onView(withId(R.id.create_username_field)).perform(typeText("user"));
+    //onView(withId(R.id.create_password_field)).perform(typeText("pass"));
+    //closeSoftKeyboard();
 
-        onView(withId(R.id.user_login_button)).perform(click());
-        onView(withId(R.id.thermostat_button)).perform(click());
+    onView(withId(R.id.user_login_button)).perform(click());
+    onView(withId(R.id.thermostat_button)).perform(click());
 
-        onView(withContentDescription("Button 0")).perform(click());
+    onView(withContentDescription("Button 0")).perform(click());
 
-        onView(withId(R.id.thermostatInfo)).check(matches(isDisplayed()));
-    }
+    onView(withId(R.id.thermostatInfo)).check(matches(isDisplayed()));
+  }
 
-    @Test
-    public void thermostatUnitTest() {
+  @Test
+  public void thermostatUnitTest() {
 
-        //onView(withId(R.id.create_username_field)).perform(typeText("user"));
-        //onView(withId(R.id.create_password_field)).perform(typeText("pass"));
-        //closeSoftKeyboard();
+    //onView(withId(R.id.create_username_field)).perform(typeText("user"));
+    //onView(withId(R.id.create_password_field)).perform(typeText("pass"));
+    //closeSoftKeyboard();
 
-        onView(withId(R.id.user_login_button)).perform(click());
-        onView(withId(R.id.thermostat_button)).perform(click());
+    onView(withId(R.id.user_login_button)).perform(click());
+    onView(withId(R.id.thermostat_button)).perform(click());
 
-        onView(withContentDescription("Button 0")).perform(click());
+    onView(withContentDescription("Button 0")).perform(click());
 
-        Thermostat t = mainController.controller.getThermostats().get(0);
-        double temp = t.getTemp().getTemperature();
+    Thermostat t = mainController.controller.getThermostats().get(0);
+    double temp = t.getTemp().getTemperature();
 
-        onView(withId(R.id.celsiusButton)).perform(click());
+    onView(withId(R.id.celsiusButton)).perform(click());
 
-        assert (t.getTemp().getUnit() == Temperature.Unit.CELSIUS);
-        assert (t.getTemp().getTemperature() == (temp * 9.0 / 5.0) + 32);
+    assert (t.getTemp().getUnit() == Temperature.Unit.CELSIUS);
+    assert (t.getTemp().getTemperature() == (temp * 9.0 / 5.0) + 32);
 
-        onView(withId(R.id.fahrenheitButton)).perform(click());
+    onView(withId(R.id.fahrenheitButton)).perform(click());
 
-        assert(t.getTemp().getUnit() == Temperature.Unit.FAHRENHEIT);
-        assert(t.getTemp().getTemperature() == temp);
-    }
+    assert (t.getTemp().getUnit() == Temperature.Unit.FAHRENHEIT);
+    assert (t.getTemp().getTemperature() == temp);
+  }
 
-    @Test
-    public void checkToggle(){
+  @Test
+  public void checkToggle() {
 
-        //onView(withId(R.id.create_username_field)).perform(typeText("user"));
-        //onView(withId(R.id.create_password_field)).perform(typeText("pass"));
-        //closeSoftKeyboard();
+    //onView(withId(R.id.create_username_field)).perform(typeText("user"));
+    //onView(withId(R.id.create_password_field)).perform(typeText("pass"));
+    //closeSoftKeyboard();
 
-        onView(withId(R.id.user_login_button)).perform(click());
-        onView(withId(R.id.thermostat_button)).perform(click());
+    onView(withId(R.id.user_login_button)).perform(click());
+    onView(withId(R.id.thermostat_button)).perform(click());
 
-        onView(withContentDescription("Button 0")).perform(click());
+    onView(withContentDescription("Button 0")).perform(click());
 
-        mainController.controller.getThermostats().get(0).setStatus(Status.OFF);
-        onView(withId(R.id.onOffToggle)).perform(click());
+    mainController.controller.getThermostats().get(0).setStatus(Status.OFF);
+    onView(withId(R.id.onOffToggle)).perform(click());
 
-        assert(mainController.controller.getThermostats().get(0).getStatus() == Status.NORMAL);
+    assert (mainController.controller.getThermostats().get(0).getStatus() == Status.NORMAL);
 
-        onView(withId(R.id.onOffToggle)).perform(click());
+    onView(withId(R.id.onOffToggle)).perform(click());
 
-        assert(mainController.controller.getThermostats().get(0).getStatus() == Status.OFF);
-    }
+    assert (mainController.controller.getThermostats().get(0).getStatus() == Status.OFF);
+  }
 }
