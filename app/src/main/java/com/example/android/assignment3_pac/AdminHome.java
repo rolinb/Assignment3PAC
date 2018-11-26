@@ -1,5 +1,6 @@
 package com.example.android.assignment3_pac;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -16,14 +17,22 @@ public class AdminHome extends AppCompatActivity {
     Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
 
-    FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-    fab.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-            .setAction("Action", null).show();
-      }
-    });
+
+  }
+
+  public void goToUserView(View v){
+    Intent intent = new Intent(this, UserHome.class);
+    startActivity(intent);
+  }
+
+  public void goToManageUsers(View v){
+    Intent intent = new Intent(this, ManageUsers.class);
+    startActivity(intent);
+  }
+
+  public void goToManageDevices(View v){
+    Intent intent = new Intent(this, ManageDevices.class);
+    startActivity(intent);
   }
 
 }

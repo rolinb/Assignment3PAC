@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
+import com.example.android.assignment3_pac.assn2.mainController;
 
 public class UserHome extends AppCompatActivity {
 
@@ -14,6 +16,11 @@ public class UserHome extends AppCompatActivity {
     setContentView(R.layout.activity_user_home);
     Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
+
+    if(mainController.controller.getIsAdmin()){
+      Button admin = findViewById(R.id.adminButton);
+      admin.setVisibility(View.VISIBLE);
+    }
 
   }
 
@@ -34,6 +41,11 @@ public class UserHome extends AppCompatActivity {
 
   public void goToThermostat(View v) {
     Intent intent = new Intent(this, ThermostatController.class);
+    startActivity(intent);
+  }
+
+  public void goToAdmin(View v){
+    Intent intent = new Intent(this, AdminHome.class);
     startActivity(intent);
   }
 

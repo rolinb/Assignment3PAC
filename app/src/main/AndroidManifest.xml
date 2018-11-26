@@ -17,22 +17,28 @@
       </intent-filter>
     </activity>
     <activity
-      android:name=".UserHome"
       android:label="@string/title_activity_user_home"
+      android:name=".UserHome"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".AdminHome"
       android:label="@string/title_activity_admin_home"
+      android:name=".AdminHome"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity android:name=".CameraController"/>
     <activity
-      android:name=".CameraViewer"
       android:label="@string/title_activity_camera_viewer"
+      android:name=".CameraViewer"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity android:name=".LightbulbController"/>
     <activity android:name=".SmartPlugController"/>
     <activity android:name=".ThermostatController"/>
-    <activity android:name=".ThermostatViewer"></activity>
+    <activity android:name=".ThermostatViewer"/>
+    <activity android:name=".ManageUsers">
+    </activity>
+    <activity android:name=".ManageDevices">
+    </activity>
+    <activity android:name=".AddDevice">
+    </activity>
   </application>
 
 </manifest>

@@ -22,6 +22,7 @@ public class mainController {
   public static class controller {
 
     private static Mediator hub;
+    private static boolean isAdmin = false;
 
     //Todo: set this up to read from file static works for now
     public static void initialise() {
@@ -108,6 +109,14 @@ public class mainController {
           l.toggle();
         }
       }
+    }
+
+    public static boolean getIsAdmin(){
+      return isAdmin;
+    }
+
+    public static void setIsAdmin(boolean b){
+      isAdmin = b;
     }
 
 
