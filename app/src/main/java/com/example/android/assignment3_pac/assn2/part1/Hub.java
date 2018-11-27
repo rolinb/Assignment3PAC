@@ -1,5 +1,7 @@
 package com.example.android.assignment3_pac.assn2.part1;
 
+import com.example.android.assignment3_pac.DeviceReaderWriter;
+import com.example.android.assignment3_pac.LogCreator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -16,7 +18,7 @@ public class Hub extends Device implements Mediator {
 
   private HashMap<UUID, Device> aDevices = new HashMap<UUID, Device>();
   private HashMap<UUID, Client> aClients = new HashMap<UUID, Client>();
-  private Logger logger = LoggerFactory.getLogger(Hub.class);
+  private Logger logger = LoggerFactory.getLogger(LogCreator.class);
 
   public void startup() {
     // some logic about sending init messages or somethng.

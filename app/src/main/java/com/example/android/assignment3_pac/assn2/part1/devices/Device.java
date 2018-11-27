@@ -6,12 +6,14 @@ import java.util.UUID;
 
 public abstract class Device {
 
-  private final UUID aUuid = UUID.randomUUID();
+  private UUID aUuid = UUID.randomUUID();
   private Status aStatus; // This can't be NULL!
 
   public UUID getIdentifier() {
     return aUuid;
   }
+
+  public void setIdentifier(UUID uuid) {aUuid = uuid;}
 
   public Status getStatus() {
     // Since the status can't be NULL, then check IF NULL and IF return dummy

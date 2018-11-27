@@ -1,5 +1,10 @@
 package com.example.android.assignment3_pac.assn2;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Environment;
+import com.example.android.assignment3_pac.DeviceReaderWriter;
+import com.example.android.assignment3_pac.Log4JHelper;
 import com.example.android.assignment3_pac.assn2.part1.Hub;
 import com.example.android.assignment3_pac.assn2.part1.Mediator;
 import com.example.android.assignment3_pac.assn2.part1.Status;
@@ -9,6 +14,7 @@ import com.example.android.assignment3_pac.assn2.part1.devices.Lightbulb;
 import com.example.android.assignment3_pac.assn2.part1.devices.SmartPlug;
 import com.example.android.assignment3_pac.assn2.part1.devices.Thermostat;
 
+import java.io.File;
 import org.json.*;
 
 import java.util.ArrayList;
@@ -25,17 +31,23 @@ public class mainController {
     private static boolean isAdmin = false;
 
     //Todo: set this up to read from file static works for now
-    public static void initialise() {
+    public static void initialise(Context c) {
       hub = new Hub();
-      Camera c = new Camera(hub);
-      c.setStatus(Status.OFF);
-      c = new Camera(hub);
-      c.setStatus(Status.NORMAL);
-      Lightbulb l = new Lightbulb(hub);
-      l = new Lightbulb(hub);
-      l = new Lightbulb(hub);
-      SmartPlug s = new SmartPlug(hub);
-      Thermostat t = new Thermostat(hub);
+
+      new DeviceReaderWriter(c).createDevices();
+
+
+       /*
+        Camera c = new Camera(hub);
+        c.setStatus(Status.OFF);
+        c = new Camera(hub);
+        c.setStatus(Status.NORMAL);
+        Lightbulb l = new Lightbulb(hub);
+        l = new Lightbulb(hub);
+        l = new Lightbulb(hub);
+        SmartPlug s = new SmartPlug(hub);
+        Thermostat t = new Thermostat(hub);*/
+
 
 
     }
@@ -118,6 +130,7 @@ public class mainController {
     public static void setIsAdmin(boolean b){
       isAdmin = b;
     }
+
 
 
   }
