@@ -10,15 +10,17 @@ public class LogCreator extends Application {
   public void onCreate() {
     super.onCreate();
 
+
     // configure log4j
     configureLog4j();
   }
 
-  private void configureLog4j() {
+  public void configureLog4j() {
 
     // set file name
     String fileName = Environment.getExternalStorageDirectory() + "/"
         + "log4j.log";
+    System.out.println("filname is : " + fileName);
     // set log line pattern
     String filePattern = "%d - [%c] - %p : %m%n";
     // set max. number of backed up log files
