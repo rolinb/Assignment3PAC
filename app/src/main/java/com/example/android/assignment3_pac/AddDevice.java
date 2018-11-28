@@ -46,8 +46,7 @@ public class AddDevice extends AppCompatActivity {
   }
 
   private void returnToManageDevices(View v){
-    Intent intent = new Intent(this, ManageDevices.class);
-    startActivity(intent);
+    finish();
   }
 
 }

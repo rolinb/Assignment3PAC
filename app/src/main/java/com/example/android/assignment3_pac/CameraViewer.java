@@ -1,12 +1,14 @@
 package com.example.android.assignment3_pac;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.VideoView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -42,7 +44,7 @@ public class CameraViewer extends AppCompatActivity {
 
     }
 
-    ImageView changeImage = findViewById(R.id.cameraSees);
+    VideoView changeImage = (VideoView) findViewById(R.id.cameraSees);
     if (onOff.isChecked()) {
       if (camera.getIsRecording()) {
         toggle.setChecked(true);
@@ -50,22 +52,27 @@ public class CameraViewer extends AppCompatActivity {
       toggle.setEnabled(true);
       boolean person = new Random().nextBoolean(); //determines lights
       if (person) {
-        changeImage.setImageResource(R.drawable.ic_person_added);
+        changeImage.setVideoURI(Uri.parse("https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_16x9/bipbop_16x9_variant.m3u8"));//.setImageResource(R.drawable.ic_person_added);
+        changeImage.requestFocus();
+        changeImage.start();
         mainController.controller.cameraChangeLights(person);
       } else {
         mainController.controller.cameraChangeLights(person);
-        changeImage.setImageResource(R.drawable.ic_empty_person);
+        changeImage.setVideoURI(Uri.parse("https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_16x9/bipbop_16x9_variant.m3u8"));//.setImageResource(R.drawable.ic_empty_person);
+        changeImage.requestFocus();
+        changeImage.start();
       }
+
     } else {
       toggle.setEnabled(false);
-      changeImage.setImageResource(R.color.colorBlack);
+      changeImage.suspend();//.setImageResource(R.color.colorBlack);
 
     }
 
     onOff.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        ImageView changeImage = findViewById(R.id.cameraSees);
+        VideoView changeImage = (VideoView) findViewById(R.id.cameraSees);
 
         if (onOff.isChecked()) {
           toggle.setEnabled(true);
@@ -74,16 +81,20 @@ public class CameraViewer extends AppCompatActivity {
 
           boolean person = new Random().nextBoolean();
           if (person) {
-            changeImage.setImageResource(R.drawable.ic_person_added);
+            changeImage.setVideoURI(Uri.parse("https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_16x9/bipbop_16x9_variant.m3u8"));//.setImageResource(R.drawable.ic_person_added);
+            changeImage.requestFocus();
+            changeImage.start();
             mainController.controller.cameraChangeLights(person);
           } else {
             mainController.controller.cameraChangeLights(person);
-            changeImage.setImageResource(R.drawable.ic_empty_person);
+            changeImage.setVideoURI(Uri.parse("https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_16x9/bipbop_16x9_variant.m3u8"));//.setImageResource(R.drawable.ic_empty_person);
+            changeImage.requestFocus();
+            changeImage.start();
           }
 
         } else {
           camera.setStatus(Status.OFF);
-          changeImage.setImageResource(R.color.colorBlack);
+          changeImage.stopPlayback();//.setImageResource(R.color.colorBlack);
           toggle.setEnabled(false);
           updateDeviceInfo(deviceInfo, camera);
         }
@@ -97,14 +108,18 @@ public class CameraViewer extends AppCompatActivity {
 
           try {
             camera.record();
-            ImageView changeImage = findViewById(R.id.cameraSees);
+            VideoView changeImage = (VideoView) findViewById(R.id.cameraSees);
             boolean person = new Random().nextBoolean();
             if (person) {
-              changeImage.setImageResource(R.drawable.ic_person_added);
+              changeImage.setVideoURI(Uri.parse("https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_16x9/bipbop_16x9_variant.m3u8"));//.setImageResource(R.drawable.ic_person_added);
+              changeImage.requestFocus();
+              changeImage.start();
               mainController.controller.cameraChangeLights(person);
             } else {
               mainController.controller.cameraChangeLights(person);
-              changeImage.setImageResource(R.drawable.ic_empty_person);
+              changeImage.setVideoURI(Uri.parse("https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_16x9/bipbop_16x9_variant.m3u8"));//.setImageResource(R.drawable.ic_empty_person);
+              changeImage.requestFocus();
+              changeImage.start();
             }
 
 

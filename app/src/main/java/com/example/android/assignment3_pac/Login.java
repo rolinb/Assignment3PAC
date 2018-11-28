@@ -52,6 +52,17 @@ public class Login extends AppCompatActivity {
 
 
     }
+    if (checkSelfPermission(Manifest.permission.INTERNET) ==
+            PackageManager.PERMISSION_GRANTED) {
+
+
+
+    } else {
+      requestPermissions(new String[]{Manifest.permission.INTERNET},
+              1);
+
+
+    }
   }
 
   private void signIn(String name, String pass){
@@ -88,6 +99,11 @@ public class Login extends AppCompatActivity {
       if (requestCode == 0) {
         if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED
             && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+        }
+      }
+      if (requestCode == 1) {
+        if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED
+                && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
         }
       }
     }

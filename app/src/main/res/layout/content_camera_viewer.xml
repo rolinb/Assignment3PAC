@@ -21,7 +21,7 @@
     app:layout_constraintStart_toStartOf="@+id/cameraSees"
     app:layout_constraintTop_toTopOf="parent"/>
 
-  <ImageView
+  <VideoView
     android:id="@+id/cameraSees"
     android:layout_width="321dp"
     android:layout_height="367dp"
