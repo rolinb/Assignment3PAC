@@ -115,10 +115,12 @@ public class mainController {
     }
 
     public static void cameraChangeLights(boolean bool) {
-      for (Lightbulb l : getLightbulbs()) {
-        hub.alert(l, "Status changed by camera");
-        if (l.getCondition() != bool) {
-          l.toggle();
+      if(getLightbulbs() != null ) {
+        for (Lightbulb l : getLightbulbs()) {
+          hub.alert(l, "Status changed by camera");
+          if (l.getCondition() != bool) {
+            l.toggle();
+          }
         }
       }
     }

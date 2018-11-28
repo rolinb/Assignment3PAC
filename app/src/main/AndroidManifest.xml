@@ -3,7 +3,7 @@
   package="com.example.android.assignment3_pac">
 
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
   <application
     android:allowBackup="true"
@@ -41,6 +41,8 @@
     <activity android:name=".ManageDevices">
     </activity>
     <activity android:name=".AddDevice">
+    </activity>
+    <activity android:name=".DeleteDevice">
     </activity>
   </application>
 

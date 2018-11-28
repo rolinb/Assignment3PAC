@@ -78,6 +78,12 @@ public class DeviceReaderWriter {
 
   }
 
+  public void deleteDevice(Device d){
+    sp =  mContext.getSharedPreferences("DEVICES", MODE_PRIVATE);
+    Editor editor = sp.edit();
+    editor.remove(d.getIdentifier().toString());
+  }
+
 
 
 

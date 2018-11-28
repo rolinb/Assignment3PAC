@@ -23,10 +23,35 @@ public class ManageDevices extends AppCompatActivity implements  View.OnClickLis
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_manage_devices);
 
+    createView();
+
+    //setContentView(layout);
+  }
+
+  @Override
+  protected void onResume(){
+    super.onResume();
+    createView();
+  }
+
+  @Override
+  public void onClick(View v){
+    Intent intent = new Intent(this, DeleteDevice.class);
+    intent.putExtra("UUID", ((Device) v.getTag()).getIdentifier().toString());
+    startActivity(intent);
+  }
+
+  public void goToAddDevice(View v){
+    Intent intent = new Intent(this, AddDevice.class);
+    startActivity(intent);
+  }
+
+  private void createView(){
     TableLayout layout = findViewById(R.id.deviceTable);
 
 
     if ( ((Hub) mainController.controller.getHub()).getDevices().values() != null) {
+      layout.removeAllViews();
 
       int i = 0;
 
@@ -70,16 +95,5 @@ public class ManageDevices extends AppCompatActivity implements  View.OnClickLis
       mytext.setText("No Devices available");
       layout.addView(mytext);
     }
-    //setContentView(layout);
-  }
-
-  @Override
-  public void onClick(View v){
-
-  }
-
-  public void goToAddDevice(View v){
-    Intent intent = new Intent(this, AddDevice.class);
-    startActivity(intent);
   }
 }
