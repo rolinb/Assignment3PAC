@@ -26,6 +26,12 @@ public class Hub extends Device implements Mediator {
   }
 
   public void shutdown() {
+    if(!aDevices.isEmpty()){
+      for(Device d : aDevices.values()) {
+        d.setStatus(Status.OFF);
+      }
+    }
+    log("Notification: System has been shutdown, all devices OFF. " );
   }
 
   @Override

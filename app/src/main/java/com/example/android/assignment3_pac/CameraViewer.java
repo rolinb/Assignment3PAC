@@ -52,13 +52,13 @@ public class CameraViewer extends AppCompatActivity {
       toggle.setEnabled(true);
       boolean person = new Random().nextBoolean(); //determines lights
       if (person) {
-        changeImage.setVideoURI(Uri.parse("https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_16x9/bipbop_16x9_variant.m3u8"));//.setImageResource(R.drawable.ic_person_added);
+        changeImage.setVideoURI(Uri.parse("https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_4x3/bipbop_4x3_variant.m3u8"));//.setImageResource(R.drawable.ic_person_added);
         changeImage.requestFocus();
         changeImage.start();
         mainController.controller.cameraChangeLights(person);
       } else {
         mainController.controller.cameraChangeLights(person);
-        changeImage.setVideoURI(Uri.parse("https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_16x9/bipbop_16x9_variant.m3u8"));//.setImageResource(R.drawable.ic_empty_person);
+        changeImage.setVideoURI(Uri.parse("https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_4x3/bipbop_4x3_variant.m3u8"));//.setImageResource(R.drawable.ic_empty_person);
         changeImage.requestFocus();
         changeImage.start();
       }
@@ -81,13 +81,13 @@ public class CameraViewer extends AppCompatActivity {
 
           boolean person = new Random().nextBoolean();
           if (person) {
-            changeImage.setVideoURI(Uri.parse("https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_16x9/bipbop_16x9_variant.m3u8"));//.setImageResource(R.drawable.ic_person_added);
+            changeImage.setVideoURI(Uri.parse("https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_4x3/bipbop_4x3_variant.m3u8"));//.setImageResource(R.drawable.ic_person_added);
             changeImage.requestFocus();
             changeImage.start();
             mainController.controller.cameraChangeLights(person);
           } else {
             mainController.controller.cameraChangeLights(person);
-            changeImage.setVideoURI(Uri.parse("https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_16x9/bipbop_16x9_variant.m3u8"));//.setImageResource(R.drawable.ic_empty_person);
+            changeImage.setVideoURI(Uri.parse("https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_4x3/bipbop_4x3_variant.m3u8"));//.setImageResource(R.drawable.ic_empty_person);
             changeImage.requestFocus();
             changeImage.start();
           }
@@ -111,13 +111,13 @@ public class CameraViewer extends AppCompatActivity {
             VideoView changeImage = (VideoView) findViewById(R.id.cameraSees);
             boolean person = new Random().nextBoolean();
             if (person) {
-              changeImage.setVideoURI(Uri.parse("https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_16x9/bipbop_16x9_variant.m3u8"));//.setImageResource(R.drawable.ic_person_added);
+              changeImage.setVideoURI(Uri.parse("https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_4x3/bipbop_4x3_variant.m3u8"));//.setImageResource(R.drawable.ic_person_added);
               changeImage.requestFocus();
               changeImage.start();
               mainController.controller.cameraChangeLights(person);
             } else {
               mainController.controller.cameraChangeLights(person);
-              changeImage.setVideoURI(Uri.parse("https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_16x9/bipbop_16x9_variant.m3u8"));//.setImageResource(R.drawable.ic_empty_person);
+              changeImage.setVideoURI(Uri.parse("https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_4x3/bipbop_4x3_variant.m3u8"));//.setImageResource(R.drawable.ic_empty_person);
               changeImage.requestFocus();
               changeImage.start();
             }
