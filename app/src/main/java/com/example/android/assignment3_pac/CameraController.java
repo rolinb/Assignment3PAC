@@ -1,14 +1,13 @@
 package com.example.android.assignment3_pac;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-
 import com.example.android.assignment3_pac.assn2.mainController;
 import com.example.android.assignment3_pac.assn2.part1.devices.Camera;
 import com.example.android.assignment3_pac.assn2.part1.devices.Device;

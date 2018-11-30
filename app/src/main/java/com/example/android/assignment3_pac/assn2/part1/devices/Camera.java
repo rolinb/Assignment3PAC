@@ -2,7 +2,7 @@ package com.example.android.assignment3_pac.assn2.part1.devices;
 
 import com.example.android.assignment3_pac.assn2.part1.HubRegistrationException;
 import com.example.android.assignment3_pac.assn2.part1.Mediator;
-import com.example.android.assignment3_pac.assn2.part1.Status;
+import java.util.UUID;
 
 public class Camera extends Device {
 
@@ -10,6 +10,19 @@ public class Camera extends Device {
   private int diskSize;
 
   private final Mediator aMed;
+
+
+  public Camera(Mediator med, UUID uuid) {
+    super();
+    setIdentifier(uuid);
+    aMed = med;
+    diskSize = 999;
+    try {
+      aMed.register(this);
+    } catch (HubRegistrationException e) {
+      // in future, log this
+    }
+  }
 
   public Camera(Mediator med) {
     super();

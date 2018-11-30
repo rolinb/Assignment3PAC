@@ -1,18 +1,12 @@
 package com.example.android.assignment3_pac.assn2.part1;
 
-import com.example.android.assignment3_pac.DeviceReaderWriter;
-import com.example.android.assignment3_pac.Log4JHelper;
-import com.example.android.assignment3_pac.LogCreator;
+import com.example.android.assignment3_pac.assn2.part1.devices.Device;
+import com.example.android.assignment3_pac.assn2.part2.Client;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
-
-import com.example.android.assignment3_pac.assn2.part1.devices.Device;
-import com.example.android.assignment3_pac.assn2.part2.Client;
-
 import org.apache.log4j.Logger;
 import org.json.JSONObject;
-import org.slf4j.LoggerFactory;
 
 
 public class Hub extends Device implements Mediator {
@@ -26,12 +20,12 @@ public class Hub extends Device implements Mediator {
   }
 
   public void shutdown() {
-    if(!aDevices.isEmpty()){
-      for(Device d : aDevices.values()) {
+    if (!aDevices.isEmpty()) {
+      for (Device d : aDevices.values()) {
         d.setStatus(Status.OFF);
       }
     }
-    log("Notification: System has been shutdown, all devices OFF. " );
+    log("Notification: System has been shutdown, all devices OFF. ");
   }
 
   @Override

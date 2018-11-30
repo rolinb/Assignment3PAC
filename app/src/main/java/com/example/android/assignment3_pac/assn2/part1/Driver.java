@@ -1,6 +1,10 @@
 package com.example.android.assignment3_pac.assn2.part1;
 
-import com.example.android.assignment3_pac.assn2.part1.devices.*;
+import com.example.android.assignment3_pac.assn2.part1.devices.Camera;
+import com.example.android.assignment3_pac.assn2.part1.devices.Lightbulb;
+import com.example.android.assignment3_pac.assn2.part1.devices.SmartPlug;
+import com.example.android.assignment3_pac.assn2.part1.devices.SwitchableDevice;
+import com.example.android.assignment3_pac.assn2.part1.devices.Thermostat;
 
 public class Driver {
 

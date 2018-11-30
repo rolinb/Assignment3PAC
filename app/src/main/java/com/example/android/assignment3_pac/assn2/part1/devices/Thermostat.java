@@ -2,12 +2,12 @@ package com.example.android.assignment3_pac.assn2.part1.devices;
 
 import com.example.android.assignment3_pac.assn2.part1.HubRegistrationException;
 import com.example.android.assignment3_pac.assn2.part1.Mediator;
-import com.example.android.assignment3_pac.assn2.part1.Status;
+import java.util.UUID;
 
 public class Thermostat extends Device {
 
   private final Mediator aMed;
-  private Status status = Status.NORMAL;
+  //private Status status = Status.NORMAL;
   private Temperature setPoint;
 
   {
@@ -28,10 +28,21 @@ public class Thermostat extends Device {
     }
   }
 
-  @Override
+  public Thermostat(Mediator mediator, UUID uuid) {
+    super();
+    setIdentifier(uuid);
+    this.aMed = mediator;
+    try {
+      aMed.register(this);
+    } catch (HubRegistrationException e) {
+      e.printStackTrace();
+    }
+  }
+
+  /*@Override
   public Status getStatus() {
     return status;
-  }
+  }*/
 
   @Override
   public String toString() {
@@ -41,7 +52,7 @@ public class Thermostat extends Device {
   public void setTemp(Temperature t) {
     setPoint = t;
     aMed.alert(this, "Setting temp to " + t.getTemperature());
-    status = Status.NORMAL;
+    //status = Status.NORMAL;
   }
 
   public Temperature getTemp() {

@@ -2,6 +2,7 @@ package com.example.android.assignment3_pac.assn2.part1.devices;
 
 import com.example.android.assignment3_pac.assn2.part1.HubRegistrationException;
 import com.example.android.assignment3_pac.assn2.part1.Mediator;
+import java.util.UUID;
 
 public class Lightbulb extends Device implements SwitchableDevice {
 
@@ -10,6 +11,18 @@ public class Lightbulb extends Device implements SwitchableDevice {
 
   public Lightbulb(Mediator pMed) {
     super();
+    aMed = pMed;
+    isOn = false;
+    try {
+      aMed.register(this);
+    } catch (HubRegistrationException e) {
+      e.printStackTrace();
+    }
+  }
+
+  public Lightbulb(Mediator pMed, UUID uuid) {
+    super();
+    setIdentifier(uuid);
     aMed = pMed;
     isOn = false;
     try {

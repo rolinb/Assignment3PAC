@@ -1,10 +1,9 @@
 package com.example.android.assignment3_pac.assn2.part1;
 
 import com.example.android.assignment3_pac.assn2.part1.devices.Device;
-import org.json.JSONObject;
-
 import java.util.Date;
 import java.util.HashMap;
+import org.json.JSONObject;
 
 /**
  * A method object for making testing easier Messaging not a core responsibility for Hub

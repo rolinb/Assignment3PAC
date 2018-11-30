@@ -2,14 +2,12 @@ package com.example.android.assignment3_pac;
 
 import android.app.Application;
 import android.os.Environment;
-import com.example.android.assignment3_pac.Log4JHelper;
 
 public class LogCreator extends Application {
 
   @Override
   public void onCreate() {
     super.onCreate();
-
 
     // configure log4j
     configureLog4j();

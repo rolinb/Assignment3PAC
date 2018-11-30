@@ -4,6 +4,7 @@ import de.mindpipe.android.logging.log4j.LogConfigurator;
 import org.apache.log4j.Logger;
 
 public class Log4JHelper {
+
   private final static LogConfigurator _logConfigurator = new LogConfigurator();
 
   public static void Configure(String fileName, String filePattern,

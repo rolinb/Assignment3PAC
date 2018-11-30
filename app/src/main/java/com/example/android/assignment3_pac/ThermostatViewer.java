@@ -1,8 +1,8 @@
 package com.example.android.assignment3_pac;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.NumberPicker;
 import android.widget.RadioButton;
@@ -10,12 +10,10 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
-
 import com.example.android.assignment3_pac.assn2.mainController;
 import com.example.android.assignment3_pac.assn2.part1.Status;
 import com.example.android.assignment3_pac.assn2.part1.devices.Temperature;
 import com.example.android.assignment3_pac.assn2.part1.devices.Thermostat;
-
 import java.util.Random;
 import java.util.UUID;
 
@@ -106,7 +104,11 @@ public class ThermostatViewer extends AppCompatActivity {
           numberPicker.setMaxValue(30);
           numberPicker.setValue((int) tmp);
         } catch (Temperature.TemperatureOutofBoundsException e) {
-          Toast.makeText(ThermostatViewer.this, e.toString(), Toast.LENGTH_SHORT).show();
+          if ((mainController.controller.getIsAdmin()
+              && mainController.controller.getNotificationLevel() > 0) ||
+              mainController.controller.getNotificationLevel() == 2) {
+            Toast.makeText(ThermostatViewer.this, e.toString(), Toast.LENGTH_SHORT).show();
+          }
         }
       }
     });
@@ -122,7 +124,11 @@ public class ThermostatViewer extends AppCompatActivity {
           numberPicker.setMaxValue(86);
           numberPicker.setValue((int) tmp);
         } catch (Temperature.TemperatureOutofBoundsException e) {
-          Toast.makeText(ThermostatViewer.this, e.toString(), Toast.LENGTH_SHORT).show();
+          if ((mainController.controller.getIsAdmin()
+              && mainController.controller.getNotificationLevel() > 0) ||
+              mainController.controller.getNotificationLevel() == 2) {
+            Toast.makeText(ThermostatViewer.this, e.toString(), Toast.LENGTH_SHORT).show();
+          }
         }
       }
     });
@@ -136,7 +142,11 @@ public class ThermostatViewer extends AppCompatActivity {
           thermostat.setTemp(new Temperature(tmp, unit));
           numberPicker.setValue(tmp);
         } catch (Temperature.TemperatureOutofBoundsException e) {
-          Toast.makeText(ThermostatViewer.this, e.toString(), Toast.LENGTH_SHORT).show();
+          if ((mainController.controller.getIsAdmin()
+              && mainController.controller.getNotificationLevel() > 0) ||
+              mainController.controller.getNotificationLevel() == 2) {
+            Toast.makeText(ThermostatViewer.this, e.toString(), Toast.LENGTH_SHORT).show();
+          }
         }
       }
     });
@@ -148,7 +158,11 @@ public class ThermostatViewer extends AppCompatActivity {
       t.setTemp(new Temperature(72, Temperature.Unit.FAHRENHEIT));
       mainController.controller.getHub().alert(t, "Temp change triggered by outside");
     } catch (Temperature.TemperatureOutofBoundsException e) {
-      Toast.makeText(ThermostatViewer.this, e.toString(), Toast.LENGTH_SHORT).show();
+      if ((mainController.controller.getIsAdmin()
+          && mainController.controller.getNotificationLevel() > 0) ||
+          mainController.controller.getNotificationLevel() == 2) {
+        Toast.makeText(ThermostatViewer.this, e.toString(), Toast.LENGTH_SHORT).show();
+      }
 
     }
   }

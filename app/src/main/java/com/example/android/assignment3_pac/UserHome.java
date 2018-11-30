@@ -17,7 +17,7 @@ public class UserHome extends AppCompatActivity {
     Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
 
-    if(mainController.controller.getIsAdmin()){
+    if (mainController.controller.getIsAdmin()) {
       Button admin = findViewById(R.id.adminButton);
       admin.setVisibility(View.VISIBLE);
     }
@@ -44,7 +44,7 @@ public class UserHome extends AppCompatActivity {
     startActivity(intent);
   }
 
-  public void goToAdmin(View v){
+  public void goToAdmin(View v) {
     Intent intent = new Intent(this, AdminHome.class);
     startActivity(intent);
   }

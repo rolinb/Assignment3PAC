@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context=".ManageNotifications">
+
+  <TextView
+    android:id="@+id/notificationsText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="41dp"
+    android:layout_marginBottom="62dp"
+    android:layout_marginStart="36dp"
+    android:layout_marginLeft="36dp"
+    android:text="Select who receives notifications"
+    app:layout_constraintBottom_toTopOf="@+id/radioGroup2"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    />
+  <RadioGroup
+    android:id="@+id/radioGroup2"
+    android:layout_width="195dp"
+    android:layout_height="0dp"
+    android:layout_marginBottom="124dp"
+    android:layout_marginStart="36dp"
+    android:layout_marginLeft="36dp"
+    app:layout_constraintBottom_toTopOf="@+id/confirmButton"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/notificationsText"
+    >
+    <RadioButton
+      android:id="@+id/allButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:text="All"/>
+    <RadioButton
+      android:id="@+id/adminButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:text="Admins"/>
+    <RadioButton
+      android:id="@+id/noneButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:text="None"/>
+  </RadioGroup>
+  <Button
+    android:id="@+id/confirmButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="58dp"
+    android:layout_marginStart="36dp"
+    android:layout_marginLeft="36dp"
+    android:text="Confirm"
+    android:onClick="confirmButton"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/radioGroup2"
+    />
+</android.support.constraint.ConstraintLayout>

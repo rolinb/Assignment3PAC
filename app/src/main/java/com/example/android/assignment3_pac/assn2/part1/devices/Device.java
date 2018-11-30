@@ -1,19 +1,20 @@
 package com.example.android.assignment3_pac.assn2.part1.devices;
 
 import com.example.android.assignment3_pac.assn2.part1.Status;
-
 import java.util.UUID;
 
 public abstract class Device {
 
-  private UUID aUuid = UUID.randomUUID();
+  public UUID aUuid = UUID.randomUUID();
   private Status aStatus; // This can't be NULL!
 
   public UUID getIdentifier() {
     return aUuid;
   }
 
-  public void setIdentifier(UUID uuid) {aUuid = uuid;}
+  public void setIdentifier(UUID uuid) {
+    aUuid = uuid;
+  }
 
   public Status getStatus() {
     // Since the status can't be NULL, then check IF NULL and IF return dummy
